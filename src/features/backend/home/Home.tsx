@@ -1,6 +1,6 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 import axios from 'axios'
-import SHA1 from "crypto-js/sha1"
+import { SHA1 } from 'crypto-js'
 import JSEncrypt from 'jsencrypt'
 import { Component } from 'react'
 import { connect } from 'react-redux'
@@ -19,10 +19,6 @@ type State = {
 }
 
 export class Home extends Component<Props, State> {
-
-	constructor(props: Props | Readonly<Props>) {
-		super(props);
-	}
 
 	state = {
 		token: null

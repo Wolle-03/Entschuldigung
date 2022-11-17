@@ -1,11 +1,11 @@
 import { Box, Button, Dialog, DialogActions, DialogTitle, Typography } from '@mui/material'
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
-import { JSEncrypt } from 'jsencrypt/lib/JSEncrypt.js'
+import JSEncrypt from 'jsencrypt'
 import { Component } from 'react'
 import Dropzone from 'react-dropzone'
 import { connect } from 'react-redux'
-import { RootState } from '../store'
 import { reducers as actions } from '../AppSlice'
+import { RootState } from '../store'
 
 type Props = {
 	rsa_private_key: string | null,

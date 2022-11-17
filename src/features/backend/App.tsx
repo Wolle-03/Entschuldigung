@@ -3,12 +3,12 @@ import FormatSizeIcon from '@mui/icons-material/FormatSize';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { AppBar, Container, createTheme, Grid, IconButton, Input, Paper, Slider, Switch, Tooltip, Typography } from '@mui/material';
 import { Component } from 'react';
-import { connect, Provider } from 'react-redux';
+import { connect } from 'react-redux';
 import { appStateType, reducers } from './AppSlice';
 import Home from './home/Home';
 import { reducers as homeReducers } from './home/HomeSlice';
 import Login from './login/Login';
-import { RootState, store } from './store';
+import { RootState } from './store';
 
 type Props = appStateType & typeof reducers & {
 	setEntries: typeof homeReducers.setEntries
