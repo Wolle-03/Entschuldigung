@@ -1,11 +1,13 @@
 import { Typography } from "@mui/material";
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { useSearchParams } from "react-router-dom";
 import { RootState } from '../store';
 
 type Props = {
 	schueler: string,
-	signature: string
+	signature: string,
+	debug: string
 }
 
 export class Success extends Component<Props> {
@@ -20,10 +22,23 @@ export class Success extends Component<Props> {
 					{this.props.schueler} wurde erfolgreich entschuldigt.
 					Sie können diesen Tab nun schließen.
 				</Typography>
-				<div dangerouslySetInnerHTML={{ __html: this.props.signature }}></div>
+				{this.props.debug === "true" &&
+					<div dangerouslySetInnerHTML={{ __html: this.props.signature }}></div>
+				}
 			</React.Fragment >
 		)
 	}
+}
+
+export function Wrapper(props: Partial<Props>) {
+	const [params] = useSearchParams();
+	return (
+		<Success
+			schueler={props.schueler!}
+			signature={props.signature!}
+			debug={params.get("debug")!}
+		/>
+	)
 }
 
 const mapStateToProps = (state: RootState) => ({
@@ -33,4 +48,4 @@ const mapStateToProps = (state: RootState) => ({
 
 const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Success)
+export default connect(mapStateToProps, mapDispatchToProps)(Wrapper)
