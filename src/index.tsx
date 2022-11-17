@@ -22,7 +22,7 @@ createRoot(document.getElementById('root')!).render(
 						<Backend />
 					</Provider>
 				} />
-				<Route path="/validate/:signature/" element={<Validate />} />
+				<Route path="/validate" element={<Validate />} />
 			</Routes>
 		</BrowserRouter>
 	</StrictMode >

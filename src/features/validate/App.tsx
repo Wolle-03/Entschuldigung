@@ -4,7 +4,7 @@ import { AppBar, Box, Container, createTheme, Grid, Paper, Slider, TextField, To
 import { SHA1 } from 'crypto-js';
 import JSEncrypt from 'jsencrypt';
 import React, { Component } from 'react';
-import { useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 type Props = {
 	signature: string
@@ -257,10 +257,10 @@ WK0cqXlsFBpyvMUFHfstrQMCAwEAAQ==
 }
 
 export default function Wrapper() {
-	const params = useParams<{ signature: string }>();
+	const [params] = useSearchParams();
 	return (
 		<App
-			signature={params.signature!}
+			signature={params.get("signature")!}
 		/>
 	)
 }

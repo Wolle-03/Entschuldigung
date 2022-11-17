@@ -52,17 +52,17 @@ export class Home extends Component<Props, State> {
 		let sign = new JSEncrypt();
 		sign.setPrivateKey(this.props.rsa_private_key)
 		let signature = sign.sign(this.state.token!, (str: string) => SHA1(str).toString(), "sha1")
-		let data = axios.post("https://test.mcs-rbg.de/getEntries.php", {
+		let data = axios.post("https://api.mcs-rbg.de/entschuldigungen/getEntries.php", {
 			token: this.state.token, signature, getFinished: this.props.archive
 		})
 			.then(response => response.data)
 			.catch((error) => { console.log(error); return null; });
 		if (!("entries" in (await data))) {
-			let token = axios.get("https://test.mcs-rbg.de/getToken.php")
+			let token = axios.get("https://api.mcs-rbg.de/entschuldigungen/getToken.php")
 				.then(response => String(response.data.token))
 				.catch((error) => { console.log(error); return ""; })
 			signature = sign.sign((await token)!, (str: string) => SHA1(str).toString(), "sha1")
-			data = axios.post("https://test.mcs-rbg.de/getEntries.php", {
+			data = axios.post("https://api.mcs-rbg.de/entschuldigungen/getEntries.php", {
 				token: await token, signature, getFinished: this.props.archive
 			})
 				.then(response => response.data)

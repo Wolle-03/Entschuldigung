@@ -14,8 +14,8 @@ const TimeSlice = createSlice({
 	initialState,
 	reducers: {
 		setSignature: (state, action: PayloadAction<string>) => {
-			QRCode.toString("https://entschuldigung.mcs-rbg.de/validate/" + encodeURIComponent(action.payload), (_error, string) => state.signature = string)
-			console.log("https://entschuldigung.mcs-rbg.de/validate/" + encodeURIComponent(action.payload));
+			QRCode.toString("https://entschuldigung.mcs-rbg.de/validate?signature=" + encodeURIComponent(action.payload), (_error, string) => state.signature = string)
+			console.log("https://entschuldigung.mcs-rbg.de/validate?signature=" + encodeURIComponent(action.payload));
 		},
 	}
 });
