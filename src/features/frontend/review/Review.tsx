@@ -1,9 +1,10 @@
 import { Divider, Grid, ListItemText, Typography } from "@mui/material";
+import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { RootState } from '../store';
 import { loginStateType } from "../login/LoginSlice";
-import { reasonStateType } from "../reason/ReasonSlice";
+import { reasonStateType, reducers } from "../reason/ReasonSlice";
+import { RootState } from '../store';
 import { timeStateType } from "../time/TimeSlice";
 
 type Props = {
@@ -83,7 +84,7 @@ export class Review extends Component<Props> {
 	}
 }
 
-export async function validateReview(props: Props) {
+export async function validateReview(props: Props, setSignature: ActionCreatorWithPayload<string, string>) {
 	var requestOptions = {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
@@ -93,17 +94,20 @@ export async function validateReview(props: Props) {
 		.then(response => response.json()).then(data => {
 			if ("error" in data)
 				return data.error;
-			else
+			else {
+				setSignature(data.signature);
 				return undefined;
+			}
 		});
 }
 
 const mapStateToProps = (state: RootState) => ({
 	login: state.login,
 	time: state.time,
-	reason: state.reason
+	reason: state.reason,
+	success: state.success,
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = { ...reducers }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Review)

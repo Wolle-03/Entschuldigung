@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import AppSlice from './AppSlice';
 import LoginSlice from './login/LoginSlice';
 import ReasonSlice from './reason/ReasonSlice';
+import SuccessSlice from './success/SuccessSlice';
 import TimeSlice from './time/TimeSlice';
 
 export const store = configureStore({
@@ -9,7 +10,8 @@ export const store = configureStore({
 		app: AppSlice,
 		login: LoginSlice,
 		time: TimeSlice,
-		reason: ReasonSlice
+		reason: ReasonSlice,
+		success: SuccessSlice
 	}
 });
 

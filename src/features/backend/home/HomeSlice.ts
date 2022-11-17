@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 export type homeStateType = {
@@ -25,7 +25,7 @@ const HomeSlice = createSlice({
 	reducers: {
 		deleteEntry: (state, action: PayloadAction<{ id: number, token: string, signature: string }>) => {
 			if (state.entries !== null) {
-				state.entries.splice(state.entries.indexOf(state.entries.find(entry => entry.id == action.payload.id)!), 1)
+				state.entries.splice(state.entries.indexOf(state.entries.find(entry => entry.id === action.payload.id)!), 1)
 				console.log(action.payload)
 				axios.post("https://test.mcs-rbg.de/processEntry.php", {
 					...action.payload
@@ -36,7 +36,7 @@ const HomeSlice = createSlice({
 			state.entries = action.payload.map(entry => {
 				return {
 					...entry,
-					attest_pflicht: entry.attest_pflicht == "1",
+					attest_pflicht: entry.attest_pflicht === "1",
 				}
 			})
 		},
