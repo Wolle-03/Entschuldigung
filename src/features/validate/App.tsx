@@ -78,7 +78,7 @@ WK0cqXlsFBpyvMUFHfstrQMCAwEAAQ==
 	}
 
 	componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void {
-		if (prevState.valid == false)
+		if (prevState.valid === false)
 			this.validate();
 	}
 
