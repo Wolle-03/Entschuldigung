@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { API_BASE_URL } from '../../..'
 
 export type homeStateType = {
 	entries: {
@@ -27,7 +28,7 @@ const HomeSlice = createSlice({
 			if (state.entries !== null) {
 				state.entries.splice(state.entries.indexOf(state.entries.find(entry => entry.id === action.payload.id)!), 1)
 				console.log(action.payload)
-				axios.post("https://test.mcs-rbg.de/processEntry.php", {
+				axios.post(API_BASE_URL + "processEntry.php", {
 					...action.payload
 				})
 			}

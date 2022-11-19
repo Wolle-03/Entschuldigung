@@ -8,6 +8,8 @@ import Frontend from './features/frontend/App';
 import { store as frontendStore } from './features/frontend/store';
 import Validate from './features/validate/App';
 
+export const API_BASE_URL = "https://api.mcs-rbg.de/entschuldigungen/"
+
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		<BrowserRouter>

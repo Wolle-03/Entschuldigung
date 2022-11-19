@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import QRCode from 'qrcode';
+import { API_BASE_URL } from '../../..';
 
 export type timeStateType = {
 	signature: string
@@ -14,8 +15,8 @@ const TimeSlice = createSlice({
 	initialState,
 	reducers: {
 		setSignature: (state, action: PayloadAction<string>) => {
-			QRCode.toString("https://entschuldigung.mcs-rbg.de/validate?signature=" + encodeURIComponent(action.payload), (_error, string) => state.signature = string)
-			console.log("https://entschuldigung.mcs-rbg.de/validate?signature=" + encodeURIComponent(action.payload));
+			QRCode.toString(API_BASE_URL + "validate?signature=" + encodeURIComponent(action.payload), (_error, string) => state.signature = string)
+			console.log(API_BASE_URL + "validate?signature=" + encodeURIComponent(action.payload));
 		},
 	}
 });

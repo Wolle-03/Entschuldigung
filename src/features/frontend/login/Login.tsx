@@ -1,6 +1,7 @@
 import { Button, Checkbox, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, OutlinedInput, Select, TextField, Typography } from '@mui/material';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { API_BASE_URL } from '../../..';
 import { RootState } from '../store';
 import { reducers, loginStateType } from "./LoginSlice";
 
@@ -148,7 +149,7 @@ export async function validateLogin(props: loginStateType): Promise<string | und
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(props)
 	};
-	return fetch("https://api.mcs-rbg.de/entschuldigungen/login.php", requestOptions)
+	return fetch(API_BASE_URL + "/login.php", requestOptions)
 		.then(response => response.json()).then(data => {
 			if ("error" in data)
 				return data.error;
