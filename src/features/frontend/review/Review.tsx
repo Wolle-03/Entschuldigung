@@ -2,6 +2,7 @@ import { Divider, Grid, ListItemText, Typography } from "@mui/material";
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { API_BASE_URL } from "../../..";
 import { loginStateType } from "../login/LoginSlice";
 import { reasonStateType, reducers } from "../reason/ReasonSlice";
 import { RootState } from '../store';
@@ -90,7 +91,7 @@ export async function validateReview(props: Props, setSignature: ActionCreatorWi
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({ ...props.login, ...props.time, ...props.reason })
 	};
-	return fetch("https://api.mcs-rbg.de/entschuldigungen/", requestOptions)
+	return fetch(API_BASE_URL, requestOptions)
 		.then(response => response.json()).then(data => {
 			if ("error" in data)
 				return data.error;
