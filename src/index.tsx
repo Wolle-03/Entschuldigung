@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Backend from './features/backend/App';
 import { store as backendStore } from './features/backend/store';
+import ChangePassword from './features/changePassword/App';
 import Frontend from './features/frontend/App';
 import { store as frontendStore } from './features/frontend/store';
 import Validate from './features/validate/App';
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')!).render(
 					</Provider>
 				} />
 				<Route path="/validate" element={<Validate />} />
+				<Route path="/changePassword" element={<ChangePassword />} />
 			</Routes>
 		</BrowserRouter>
 	</StrictMode >
