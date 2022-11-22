@@ -79,29 +79,27 @@ class App extends Component<Props> {
 								</Step>
 							))}
 						</Stepper>
-						<React.Fragment>
-							{this.getStepContent()}
-							<Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-								{this.props.error === undefined && this.props.step < 4 ?
-									<React.Fragment>
-										{this.props.step !== 0 &&
-											<Button onClick={() => this.props.prevStep()} sx={{ mt: 3, ml: 1 }}>
-												Zurück
-											</Button>
-										}
-										<Button
-											variant="contained"
-											onClick={() => this.nextStep()}
-											sx={{ mt: 3, ml: 1 }}
-										>
-											{this.props.step === this.steps.length - 1 ? "Abschicken" : "Weiter"}
+						{this.getStepContent()}
+						<Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+							{this.props.error === undefined && this.props.step < 4 ?
+								<React.Fragment>
+									{this.props.step !== 0 &&
+										<Button onClick={() => this.props.prevStep()} sx={{ mt: 3, ml: 1 }}>
+											Zurück
 										</Button>
-									</React.Fragment>
-									: this.props.error !== undefined &&
-									<Alert sx={{ mt: 3, width: "100%" }} severity="error">{this.props.error}</Alert>
-								}
-							</Box>
-						</React.Fragment>
+									}
+									<Button
+										variant="contained"
+										onClick={() => this.nextStep()}
+										sx={{ mt: 3, ml: 1 }}
+									>
+										{this.props.step === this.steps.length - 1 ? "Abschicken" : "Weiter"}
+									</Button>
+								</React.Fragment>
+								: this.props.error !== undefined &&
+								<Alert sx={{ mt: 3, width: "100%" }} severity="error">{this.props.error}</Alert>
+							}
+						</Box>
 					</Paper>
 				</Container>
 				<AppBar

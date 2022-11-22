@@ -99,7 +99,7 @@ export class Home extends Component<Props, State> {
 							</TableBody>
 						)}
 					</Table> :
-					<Typography margin={5} align='center' variant='h4'>Es gibt zurzeit keine Enträge</Typography>
+					<Typography margin={5} align='center' variant='h4'>Es gibt zurzeit keine Einträge</Typography>
 				}
 			</TableContainer >
 		)
