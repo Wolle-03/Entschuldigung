@@ -33,13 +33,16 @@ const HomeSlice = createSlice({
 				})
 			}
 		},
-		setEntries: (state, action: PayloadAction<{ id: number, name: string, class: string, attest_pflicht: string, time: string, reason: string, comment: string, bearbeitet: boolean }[]>) => {
-			state.entries = action.payload.map(entry => {
-				return {
-					...entry,
-					attest_pflicht: entry.attest_pflicht === "1",
-				}
-			})
+		setEntries: (state, action: PayloadAction<{ id: number, name: string, class: string, attest_pflicht: string, time: string, reason: string, comment: string, bearbeitet: boolean }[] | null>) => {
+			if (action.payload === null)
+				state.entries = null;
+			else
+				state.entries = action.payload.map(entry => {
+					return {
+						...entry,
+						attest_pflicht: entry.attest_pflicht === "1",
+					}
+				})
 		},
 	}
 });

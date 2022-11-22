@@ -73,7 +73,7 @@ export class App extends Component<Props> {
 								checked={this.props.archive}
 								onChange={(_e, c) => {
 									this.props.setShowArchieve(c);
-									this.props.setEntries([]);
+									this.props.setEntries(null);
 								}}
 							/>
 						</Tooltip>
