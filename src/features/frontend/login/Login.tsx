@@ -1,9 +1,9 @@
-import { Button, Checkbox, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, OutlinedInput, Select, TextField, Typography } from '@mui/material';
+import { Button, Checkbox, FormControl, FormControlLabel, Grid, InputLabel, Link, MenuItem, OutlinedInput, Select, TextField, Typography } from '@mui/material';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { API_BASE_URL } from '../../..';
 import { RootState } from '../store';
-import { reducers, loginStateType } from "./LoginSlice";
+import { loginStateType, reducers } from "./LoginSlice";
 
 type Props = loginStateType & typeof reducers
 
@@ -102,7 +102,7 @@ export class Login extends Component<Props>  {
 							/>
 						</FormControl>
 					</Grid>
-					<Grid item xs={12} sm={12}>
+					<Grid item xs={12} sm={12} sx={{ position: "relative" }}>
 						{loggedIn ?
 							<Button
 								variant="contained"
@@ -113,7 +113,7 @@ export class Login extends Component<Props>  {
 									this.props.setNachname("");
 									this.props.setKlasse("");
 									this.props.setGebDat("");
-								}} sx={{ mt: 3, ml: 1 }}>
+								}}>
 								Daten löschen
 							</Button>
 							:
@@ -125,6 +125,7 @@ export class Login extends Component<Props>  {
 									value={this.props.saveData ? "checked" : "unchecked"}
 								/>} label="Daten für die Zukunft speichern" />
 						}
+						<Link variant="subtitle1" href='/changePassword' sx={{ position: "absolute", right: 0 }}>Passwort ändern</Link>
 					</Grid>
 				</Grid>
 			</React.Fragment >
